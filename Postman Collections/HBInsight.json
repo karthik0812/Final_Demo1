@@ -1,0 +1,146 @@
+{
+  "info": {
+    "_postman_id": "09fc9a20-d119-411c-8c09-f97c7ef87d15",
+    "name": "HBInsight",
+    "description": "Demo Project",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "04c43229-4c78-441f-9231-105ea298e931",
+      "name": "Add User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "36503bee-c930-4b32-92ab-76310b02c2f4",
+            "exec": [
+              "//Statuse Code Assertions",
+              "",
+              "var jsonData = JSON.parse(responseBody);",
+              "var errorMessage = jsonData.Message;",
+              "",
+              "//Set Variables ",
+              "if (responseCode.code == 201) ",
+              "{",
+              "    tests[\"Status code is: \"+responseCode.code] = responseCode.code === 201;",
+              "    ",
+              " ",
+              "postman.setGlobalVariable(\"hbuserid\", jsonData.id);",
+              "postman.setGlobalVariable(\"hbtitle\", jsonData.title);",
+              "",
+              "    ",
+              "  var timingTest = postman.getEnvironmentVariable(\"timingTest\");",
+              "  tests[\"Response time: \"+  responseTime / 1000 + \" seconds\"] = responseTime < timingTest;",
+              "}else{",
+              "tests[\"user not created successfully\"] =false;",
+              "tests[\"Response code: \"+responseCode.code] =false;",
+              "tests[\"Error message: \"+errorMessage] = false;",
+              "}",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSIsImtpZCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSJ9.eyJhdWQiOiJiYWFhY2E4ZC02ZDYyLTRlNGEtYjFmNy0yOGVjNTA4NzFkMTQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mY2QxOWY5OS1iN2JjLTQ5NzEtODNjZi00ODNkYjU2NjYzMDYvIiwiaWF0IjoxNTQ3NDQ0MTQyLCJuYmYiOjE1NDc0NDQxNDIsImV4cCI6MTU0NzQ1MTY0MiwiYWlvIjoiQVNRQTIvOEtBQUFBb0ppT0wreDl6SWJQaGxrSnpuYzduVm1PUFE2anFwdDRldFRtT2ZlclRaWT0iLCJhbXIiOlsicHdkIl0sImZhbWlseV9uYW1lIjoiQmVsbCIsImdpdmVuX25hbWUiOiJLYXJlbiIsImdyb3VwcyI6WyJkNmE0ZjIzYi0xOWNlLTRkOWMtODAwMy03NzYyM2YzYzhlMWMiXSwiaXBhZGRyIjoiMjAyLjg5LjEwNi4yMDIiLCJuYW1lIjoiS2FyZW4gQmVsbCIsIm5vbmNlIjoiOWM4ODJjN2MtNzcwNC00OGM5LTk3ODQtZGI1MGMxMTgwMDY2Iiwib2lkIjoiYjczZmI3MTMtMDk5MS00NGM5LThlZjktOTU1NTRkYmM3OGE0IiwicHdkX2V4cCI6IjQ3MzI0MSIsInB3ZF91cmwiOiJodHRwczovL3BvcnRhbC5taWNyb3NvZnRvbmxpbmUuY29tL0NoYW5nZVBhc3N3b3JkLmFzcHgiLCJyb2xlcyI6WyJBZG1pbiJdLCJzdWIiOiJjWjE2OURUcHZyTGdPeHlRdWg4LVR0bk1uTUdaVlV1dnFCRmdHMVlxRnFrIiwidGlkIjoiZmNkMTlmOTktYjdiYy00OTcxLTgzY2YtNDgzZGI1NjY2MzA2IiwidW5pcXVlX25hbWUiOiJrYmVsbEBybWNicmlkZXRvcGxpbmVzdHJhdGVnaWVzLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6ImtiZWxsQHJtY2JyaWRldG9wbGluZXN0cmF0ZWdpZXMub25taWNyb3NvZnQuY29tIiwidXRpIjoiUDdBZlBQdWV6VXlWQ1FvSUVNX2NBQSIsInZlciI6IjEuMCJ9.qh8qzET1u812cv9ysE87lU-qZJk8oPcFG8-lN5Eh8B1swghvM_pWmaBWxb5L21uGvFel8k8dGjH_G8HGhxyASxur7e23rWP7ajd0MzGODijgpOqW_55dUXpXEPSmyhOWlTkIHNeCGSDOb5lP7U9U3gp7QqTiWEjZPTkAocEr9TJvAFpKeqmr-rG9iGozWk0H1X5_-S0a6tMkFyq2PjRlIy4lCVFGwZpuQekN-UJt6nIsRYzMuQPNmKIeqhjbTitKbRxmGD0cYBwHtZveJKvvbHT_DgbsiCwzN253bfOShF9uGM5c4RGEosIVtx_nH84UBLS51hMB5gfwKkrNTN2dRA",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"type\": {{Type}},\r\n\"title\": \"{{Title}}\",\r\n\"detail\": \"{{Detail}}\",\r\n\"categoryId\":{{CategoryId}} ,\r\n\"expirationDate\": \"2020-04-11T00:00:00\",\r\n\"expirationReminder\": false,\r\n\"active\": {{Active}},\r\n\"attachmentId\": null,\r\n\"comments\": [],\r\n\"createdBy\": \"System Administrator\",\r\n\"createdOn\": \"2018-05-08T20:10:19.490202Z\",\r\n\"modifiedBy\": \"System Administrator\",\r\n\"modifiedOn\": \"2018-05-08T20:10:19.4902126Z\",\r\n\"postProperties\": [144162,144163],\r\n\"postLocations\": [2,3],\r\n\"postPropertyChains\": [100003, 100004]\r\n}"
+        },
+        "url": "https://hbinsiteapidev.azurewebsites.net/api/v1/posts"
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "d589f806-2e14-4e20-ba20-1d13d798c874",
+      "name": "Get User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "51e45c6e-bf0a-4704-8e73-995ad115da5c",
+            "exec": [
+              "//Statuse Code Assertions",
+              "",
+              "var jsonData = JSON.parse(responseBody);",
+              "var errorMessage = jsonData.Message;",
+              "",
+              "//Set Variables ",
+              "if (responseCode.code == 200) ",
+              "{",
+              "    tests[\"Status code is: \"+responseCode.code] = responseCode.code === 200;",
+              "    ",
+              " ",
+              "postman.setGlobalVariable(\"hbuserid\", jsonData.id);",
+              "postman.setGlobalVariable(\"hbtitleGet\", jsonData.title);",
+              "",
+              "",
+              "",
+              "",
+              "var x= pm.globals.get(\"hbtitle\");",
+              "var y= pm.globals.get(\"hbtitleGet\");",
+              "//var y= \"abc\";",
+              "if(x==y)",
+              "{",
+              "     tests[\"Data received succcesssfylly\"] = true;",
+              "}else{",
+              "    tests[\"Data not received succcesssfylly\"] = false;",
+              "}",
+              "",
+              "",
+              "    ",
+              "  var timingTest = postman.getEnvironmentVariable(\"timingTest\");",
+              "  tests[\"Response time: \"+  responseTime / 1000 + \" seconds\"] = responseTime < timingTest;",
+              "}else{",
+              "tests[\"user not created successfully\"] =false;",
+              "//tests[\"Response code: \"+responseCode.code] =false;",
+              "//tests[\"Error message: \"+errorMessage] = false;",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSIsImtpZCI6Im5iQ3dXMTF3M1hrQi14VWFYd0tSU0xqTUhHUSJ9.eyJhdWQiOiJiYWFhY2E4ZC02ZDYyLTRlNGEtYjFmNy0yOGVjNTA4NzFkMTQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mY2QxOWY5OS1iN2JjLTQ5NzEtODNjZi00ODNkYjU2NjYzMDYvIiwiaWF0IjoxNTQ3NDQ0MTQyLCJuYmYiOjE1NDc0NDQxNDIsImV4cCI6MTU0NzQ1MTY0MiwiYWlvIjoiQVNRQTIvOEtBQUFBb0ppT0wreDl6SWJQaGxrSnpuYzduVm1PUFE2anFwdDRldFRtT2ZlclRaWT0iLCJhbXIiOlsicHdkIl0sImZhbWlseV9uYW1lIjoiQmVsbCIsImdpdmVuX25hbWUiOiJLYXJlbiIsImdyb3VwcyI6WyJkNmE0ZjIzYi0xOWNlLTRkOWMtODAwMy03NzYyM2YzYzhlMWMiXSwiaXBhZGRyIjoiMjAyLjg5LjEwNi4yMDIiLCJuYW1lIjoiS2FyZW4gQmVsbCIsIm5vbmNlIjoiOWM4ODJjN2MtNzcwNC00OGM5LTk3ODQtZGI1MGMxMTgwMDY2Iiwib2lkIjoiYjczZmI3MTMtMDk5MS00NGM5LThlZjktOTU1NTRkYmM3OGE0IiwicHdkX2V4cCI6IjQ3MzI0MSIsInB3ZF91cmwiOiJodHRwczovL3BvcnRhbC5taWNyb3NvZnRvbmxpbmUuY29tL0NoYW5nZVBhc3N3b3JkLmFzcHgiLCJyb2xlcyI6WyJBZG1pbiJdLCJzdWIiOiJjWjE2OURUcHZyTGdPeHlRdWg4LVR0bk1uTUdaVlV1dnFCRmdHMVlxRnFrIiwidGlkIjoiZmNkMTlmOTktYjdiYy00OTcxLTgzY2YtNDgzZGI1NjY2MzA2IiwidW5pcXVlX25hbWUiOiJrYmVsbEBybWNicmlkZXRvcGxpbmVzdHJhdGVnaWVzLm9ubWljcm9zb2Z0LmNvbSIsInVwbiI6ImtiZWxsQHJtY2JyaWRldG9wbGluZXN0cmF0ZWdpZXMub25taWNyb3NvZnQuY29tIiwidXRpIjoiUDdBZlBQdWV6VXlWQ1FvSUVNX2NBQSIsInZlciI6IjEuMCJ9.qh8qzET1u812cv9ysE87lU-qZJk8oPcFG8-lN5Eh8B1swghvM_pWmaBWxb5L21uGvFel8k8dGjH_G8HGhxyASxur7e23rWP7ajd0MzGODijgpOqW_55dUXpXEPSmyhOWlTkIHNeCGSDOb5lP7U9U3gp7QqTiWEjZPTkAocEr9TJvAFpKeqmr-rG9iGozWk0H1X5_-S0a6tMkFyq2PjRlIy4lCVFGwZpuQekN-UJt6nIsRYzMuQPNmKIeqhjbTitKbRxmGD0cYBwHtZveJKvvbHT_DgbsiCwzN253bfOShF9uGM5c4RGEosIVtx_nH84UBLS51hMB5gfwKkrNTN2dRA",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": "https://hbinsiteapidev.azurewebsites.net/api/v1/posts/{{hbuserid}}"
+      },
+      "response": []
+    }
+  ]
+}
